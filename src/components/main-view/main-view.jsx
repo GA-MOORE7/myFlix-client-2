@@ -12,12 +12,12 @@ export const MainView = () => {
       fetch("https://movies-flix-8f6a3e879f8c.herokuapp.com/")
         .then((response) => response.json())
         .then((data) => {
-          const moviesFromApi = data.movies.map((movies) => {
+          const moviesFromApi = data.docs.map((doc) => {
             return {
-              _id: movies._id,
-              Title: movies.Title,
+              _id: doc._id,
+              Title: doc.Title,
               ImagePath: ``,
-              Director: movies.Director.Name
+              Director: doc.Director.Name
             };
           });
   
