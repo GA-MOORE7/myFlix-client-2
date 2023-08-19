@@ -8,22 +8,41 @@ export const MainView = () => {
 
     const [selectedMovie, setSelectedMovie] = useState(null);
 
+    // useEffect(() => {
+    //   fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com")
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       const moviesFromApi = data.movies.map((movie) => {
+    //         return {
+    //           _id: movie._id,
+    //           Title: movie.Title,
+    //           Description: movie.Description,
+    //           ImagePath: ``,
+    //           Director: movie.Director
+    //         };
+    //       });
+  
+    //       setMovies(moviesFromApi);
+    //     });
+    // }, []);
+
     useEffect(() => {
-      fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com")
+      fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/movies")
         .then((response) => response.json())
         .then((data) => {
-          const moviesFromApi = data.docs.map((doc) => {
+          const moviesFromApi = data.map((movie) => {
             return {
-              _id: doc._id,
-              Title: doc.Title,
-              ImagePath: ``,
-              Director: doc.Director.Name
+              image: movie.ImagePath,
+              title: movie.Title,
+              description: movie.Description,
+              genre: movie.Genre.Name,
+              director: movie.Director.Name,             
             };
           });
-  
+
           setMovies(moviesFromApi);
         });
-    }, []);
+    }, []);   
 
     if (selectedMovie) {
         return (
