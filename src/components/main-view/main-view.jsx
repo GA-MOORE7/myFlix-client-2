@@ -9,7 +9,7 @@ export const MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null);
 
     useEffect(() => {
-      fetch("https://movies-flix-8f6a3e879f8c.herokuapp.com/")
+      fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com")
         .then((response) => response.json())
         .then((data) => {
           const moviesFromApi = data.docs.map((doc) => {
