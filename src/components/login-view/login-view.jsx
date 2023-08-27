@@ -2,16 +2,16 @@ import React from "react";
 import { useState } from "react";
 
 export const LoginView = ({ onLoggedIn }) => {
-    const [Username, setUsername] = useState("");
-    const [Password, setPassword] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleSubmit = (event) => {
         // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
 
     const data = {
-        Username: Username,
-        Password: Password
+        Username: username,
+        Password: password
     };
 
     fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/login", {
@@ -43,7 +43,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 Username:
                 <input 
                     type="text"
-                    value={Username}
+                    value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required 
                 />
@@ -52,7 +52,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 Password:
                 <input 
                     type="password"
-                    value={Password}
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required 
                 />
