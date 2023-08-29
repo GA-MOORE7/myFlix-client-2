@@ -24,16 +24,16 @@ export const MainView = () => {
           
           setMovies(data);
 
-          // const moviesFromApi = data.map((movie) => {
-          //   return {
-          //     image: movie.ImagePath,
-          //     title: movie.Title,
-          //     description: movie.Description,
-          //     genre: movie.Genre.Name,
-          //     director: movie.Director.Name,             
-          //   };
-          // });
-          // setMovies(moviesFromApi);
+          const moviesFromApi = data.map((movie) => {
+            return {
+              image: movie.ImagePath,
+              title: movie.Title,
+              description: movie.Description,
+              genre: movie.Genre.Name,
+              director: movie.Director.Name,             
+            };
+          });
+          setMovies(moviesFromApi);
 
         });
     }, [token]);
