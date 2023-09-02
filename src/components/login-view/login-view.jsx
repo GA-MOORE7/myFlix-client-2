@@ -1,5 +1,5 @@
-// import React from "react";
-import { React, useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap/Button"; 
 import { Form } from "react-bootstrap/Form"; 
 
@@ -40,8 +40,8 @@ export const LoginView = ({ onLoggedIn }) => {
     };
 
     return (
-        <Form onSubmit={handleSubmit}>  
-                
+        <Form onSubmit={handleSubmit}>
+          
             <Form.Group>
               <Form.Label>Username:</Form.Label>
                 <Form.Control 
@@ -65,6 +65,7 @@ export const LoginView = ({ onLoggedIn }) => {
             <Button variant="primary" type="submit">
                 Submit
             </Button>
+
         </Form>
     );
 };
