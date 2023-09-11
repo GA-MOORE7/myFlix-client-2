@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import "../movie-view/movie-view.scss";
 
-// The BookCard function component 
+// The MovieCard function component 
 export const MovieCard = ({ movie }) => {
 
     return (

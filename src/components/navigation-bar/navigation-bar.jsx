@@ -1,12 +1,13 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ProfileView } from "../profile-view/profile-view";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Books App
+          MyFlix App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -23,10 +24,12 @@ export const NavigationBar = ({ user, onLoggedOut }) => {
             )}
             {user && (
               <>
-                <Nav.Link as={Link} to="/">
-                  Home
-                </Nav.Link>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                <Nav.Link as={Link} to="/">Movies</Nav.Link>
+                
+                {/* Task 7 */}
+                <Nav.Link as={Link} to="profile-view">Profile</Nav.Link>
               </>
             )}
           </Nav>
