@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 
 export const ProfileView = ( { user, movies, token, updateUsername } ) => {
   
-  const [username, setUsername] = useState("user.Username");
+  const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("user.Email");
+  const [email, setEmail] = useState(user.Email);
   const [birth, setBirth] = useState("");
   // const [user, setUser] = useState("");
   // const [user, setUser] = useState(storedUser? storedUser : null);
@@ -71,8 +71,8 @@ if (username !==null) {
         <span>Registration Details: </span>
         <div>
         <UserInfo 
-        name={username} 
-        email={email} 
+        name={user.Username} 
+        email={user.Email} 
         />
         </div>
         </div>
