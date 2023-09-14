@@ -142,7 +142,7 @@ export const MainView = () => {
                     <Navigate to="/profile-view" />
                   ) : (
                     <Col>
-                    <ProfileView />
+                    <ProfileView user={user} />
                     </Col>
                   )}                  
                   </>

@@ -1,13 +1,17 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
 import UserInfo from "./user-info";
 import { useState, useEffect } from "react";
+import FavoriteMovies from "./favorite-movies";
+import { MovieCard } from "../movie-card/movie-card.jsx";
 
 export const ProfileView = ( { user, movies, token, updateUsername } ) => {
   
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
+  const favoriteMovieList = movies.filter((movie) => user.favoriteMovieList.includes(movie.id));
   const [birth, setBirth] = useState("");
   // const [user, setUser] = useState("");
   // const [user, setUser] = useState(storedUser? storedUser : null);
@@ -73,6 +77,9 @@ if (username !==null) {
         <UserInfo 
         name={user.Username} 
         email={user.Email} 
+        />
+        <FavoriteMovies
+         favoriteMovieList={favoriteMovieList}
         />
         </div>
         </div>
