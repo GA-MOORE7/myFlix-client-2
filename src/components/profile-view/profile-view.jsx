@@ -11,7 +11,7 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(user.Email);
-  const favoriteMovieList = movies.filter(m => user.favoriteMovieList.includes(m._id));
+  const favoriteMovieList = movies.filter(m => user.FavoriteMovies.includes(m._id));
   const [birth, setBirth] = useState("");
   // const [user, setUser] = useState("");
   // const [user, setUser] = useState(storedUser? storedUser : null);
@@ -80,7 +80,7 @@ if (username !==null) {
         />
         <FavoriteMovies
          favoriteMovieList={favoriteMovieList}
-         movies={movies}
+         movie={movies}
         />
         </div>
         </div>
