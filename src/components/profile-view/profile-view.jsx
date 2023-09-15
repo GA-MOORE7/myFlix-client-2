@@ -80,7 +80,7 @@ if (username !==null) {
         />
         <FavoriteMovies
          favoriteMovieList={favoriteMovieList}
-         movie={movies}
+         movies={movies}
         />
         </div>
         </div>
