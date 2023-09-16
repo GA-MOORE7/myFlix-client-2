@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import UserInfo from "./user-info";
 import UpdateUser from './update-user';
+import DeleteUser from './deregister-user';
 import { useState, useEffect } from "react";
 import FavoriteMovies from "./favorite-movies";
 import { MovieCard } from "../movie-card/movie-card.jsx";
+import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
 
 
 export const ProfileView = ( { user, movies, token, updateUsername } ) => {
@@ -22,6 +24,7 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
    
   handleShow = () => setShow(true);
   handleClose = () => setShow(false);
+
   UpdateUser = () => {
 
     const data = {
@@ -50,7 +53,7 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
       setShow(false);
   };
 
-  deleteUser = () => {
+  DeleteUser = () => {
     fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/users" + username, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },  
@@ -81,6 +84,7 @@ if (username !==null) {
         />
         <FavoriteMovies
           favoriteMovieList={favoriteMovieList}
+          movies={movies}
         />        
         <UpdateUser 
           setUsername={setUsername}
@@ -88,7 +92,12 @@ if (username !==null) {
           setEmail={setEmail}
           show={show}
           user={user} 
-        />        
+        />
+        <DeleteUser 
+        handleCloseDeregister={handleCloseDeregister}
+        deregister={deregister}        
+        /> 
+        <Button variant="primary" data-inline="true" className="m-4 float-end" onClick={handleDeregister}>Deregister your account</Button>         
       </div>
     );
   };

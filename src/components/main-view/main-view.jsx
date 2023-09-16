@@ -17,7 +17,7 @@ export const MainView = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  // const [selectedMovie, setSelectedMovie] = useState(null);
   
   
 
@@ -84,7 +84,12 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
+                    <LoginView 
+                    onLoggedIn={(user, token) => {
+												setUser(user);
+												setToken(token);
+											}} 
+                    />
                   </Col>
                 )}
               </>
@@ -121,7 +126,11 @@ export const MainView = () => {
                   <>
                     {movies.map((movie) => (
                       <Col className="mb-4" key={movie.id} md={3}>
-                        <MovieCard movie={movie} 
+                        <MovieCard 
+                          movie={movie}
+                          user={user} 
+													token={token}
+													setUser={setUser} 
                        />
                       </Col>
                     ))}
@@ -143,8 +152,10 @@ export const MainView = () => {
                   ) : (
                     <Col>
                     <ProfileView 
-                    user={user} 
-                    movies={movies} 
+                      user={user} 
+                      movies={movies}
+                      setUser={setUser}
+                      token={token} 
                     />
                     </Col>
                   )}                  

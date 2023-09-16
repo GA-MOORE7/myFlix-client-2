@@ -8,21 +8,24 @@ function UpdateUser ({ show, user, setUsername, setPassword, setEmail }) {
             <input 
                 type= 'text'
                 name= 'Username'
-                defaultValue={user.Username}
+                // defaultValue={user.Username}
+                placeholder="Enter your new username"
                 onChange={e => setUsername(e.target.value)}
             />
             <label>Password</label>
             <input 
                 type= 'password'
                 name= 'password'
-                defaultValue={user.Password}
+                // defaultValue={user.Password}
+                placeholder="Enter your new password"
                 onChange={e => setPassword(e.target.value)}
             />
             <label>Email Address</label>
             <input 
                 type= 'email'
                 name= 'email'
-                defaultValue={user.Email}
+                // defaultValue={user.Email}
+                placeholder="Enter your new email"
                 onChange={e => setEmail(e.target.value)}
             />
             <button variant='primary' type='submit' >
