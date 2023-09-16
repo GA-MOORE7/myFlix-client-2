@@ -6,6 +6,7 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../movie-view/movie-view.scss";
 
+
 // The MovieCard function component 
 export const MovieCard = ({ movie, user, token, setUser }) => {
 

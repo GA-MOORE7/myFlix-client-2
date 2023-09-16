@@ -85,6 +85,9 @@ if (username !==null) {
         <FavoriteMovies
           favoriteMovieList={favoriteMovieList}
           movies={movies}
+          user={user}
+          // setUser={setUser}
+          token={token}
         />        
         <UpdateUser 
           setUsername={setUsername}
