@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { MovieCard } from "../movie-card/movie-card";
+import Col from "react-bootstrap/Col";
 
 function FavoriteMovies ({ favoriteMovieList }){
     return (
         <div>
           <h2>Favorite Movies</h2>
-          {favoriteMovieList.map((movies) => {
+          {favoriteMovieList.map((movie) => {
             return (
-                <div key={movies._id}>
-                    <img src={movies.ImagePath} />
-                    <Link to={"/movies/${movies._id}"}>
-                       <h4>{movies.Title}</h4>
-                    </Link>
-                    <button variant="secondary" onClick={() => removeFav(movies._id)}>Remove from List</button>
-                </div>
+              <Col className="mb-5 d-flex" key={movie.id} xs={12} sm={6} md={4} lg={3}>
+                  <MovieCard movie={movie} />
+              </Col>
             ) 
           })}  
         </div>
