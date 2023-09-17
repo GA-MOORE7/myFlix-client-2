@@ -2,24 +2,18 @@ import React from "react";
 import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
 
 
-function DeleteUser ({ handleCloseDeregister, deregister }) {
+function DeleteUser ({ handleDeleteUser, showModal, handleCloseModal }) {
     return (
-        <Modal show={deregister} onHide={handleCloseDeregister}>
-                <Modal.Header closeButton>
-                    <Modal.Title className="ms-auto">Deregister</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>Do you want to delete your account?</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseDeregister}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={DeleteUser}>
-                        Delete account
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+        <Modal show={showModal} onHide={handleCloseModal}>
+				<Modal.Header closeButton>
+					<Modal.Title>Delete account</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>Are you sure you want to delete your account permanantly?</Modal.Body>
+				{/* <Modal.Footer>
+					<Button variant="primary" onClick={handleDeleteUser}>Yes</Button>
+					<Button variant="secondary" onClick={handleCloseModal}>No</Button>
+				</Modal.Footer> */}
+			</Modal>
     )
 }
 

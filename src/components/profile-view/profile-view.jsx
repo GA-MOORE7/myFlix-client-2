@@ -20,10 +20,11 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
   // const [user, setUser] = useState("");
   // const [user, setUser] = useState(storedUser? storedUser : null);
   const [show, setShow] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [deregister, setDeregister] = useState(false);
    
-  handleShow = () => setShow(true);
-  handleClose = () => setShow(false);
+  const handleShowModal = () => setShowModal(true);
+	const handleCloseModal = () => setShowModal(false);
 
   UpdateUser = () => {
 
@@ -53,27 +54,25 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
       setShow(false);
   };
 
-  DeleteUser = () => {
-    fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/users" + username, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },  
-     })
-     .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-     })
-     .then((data) => {
-      console.log(data);
-      alert("Your account is deleted successfully!");
-      updateUsername(null);
-      localStorage.clear();
-      window.location.reload();
-     });
-  };
+  const handleDeleteUser = () => {
+		fetch(`https://movies-flix-2-2c5b748a56db.herokuapp.com/users/${user.Username}`, {
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		}).then((response) => {
+			if (response.ok) {
+				setUser(null);
+				alert("Your account has been deleted");
+			} else {
+				alert("something went wrong.")
+			}
+		})
+	}
+
   
-  handleDeregister = () => setDeregister(true);
-  handleCloseDeregister = () => setDeregister(false);
+  // const handleShowModal = () => setShowModal(true);
+	// const handleCloseModal = () => setShowModal(false);
     
 if (username !==null) {
     return (
@@ -114,13 +113,12 @@ if (username !==null) {
         </Row> 
         <Row>    
           <DeleteUser 
-          handleCloseDeregister={handleCloseDeregister}
-          deregister={deregister}        
+          handleDeleteUser={handleDeleteUser}
+          handleCloseModal={handleCloseModal} 
+          showModal={showModal}            
           /> 
-        </Row>
-        <Row>
-        <Button variant="primary" data-inline="true" className="m-4 float-end" onClick={handleDeregister}>Deregister your account</Button>
-        </Row>         
+          <Button variant="primary" onClick={handleDeleteUser}>Deregister</Button>
+        </Row>        
       </Container>
     );
   };
