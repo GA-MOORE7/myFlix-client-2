@@ -6,7 +6,7 @@ import DeleteUser from './deregister-user';
 import { useState, useEffect } from "react";
 import FavoriteMovies from "./favorite-movies";
 import { MovieCard } from "../movie-card/movie-card.jsx";
-import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
+import { Card, Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
 
 
 export const ProfileView = ( { user, movies, token, updateUsername } ) => {
@@ -77,31 +77,51 @@ export const ProfileView = ( { user, movies, token, updateUsername } ) => {
     
 if (username !==null) {
     return (
-      <div>
-        <UserInfo 
-          name={user.Username} 
-          email={user.Email} 
-        />
-        <FavoriteMovies
-          favoriteMovieList={favoriteMovieList}
-          movies={movies}
-          user={user}
-          // setUser={setUser}
-          token={token}
-        />        
-        <UpdateUser 
-          setUsername={setUsername}
-          setPassword={setPassword} 
-          setEmail={setEmail}
-          show={show}
-          user={user} 
-        />
-        <DeleteUser 
-        handleCloseDeregister={handleCloseDeregister}
-        deregister={deregister}        
-        /> 
-        <Button variant="primary" data-inline="true" className="m-4 float-end" onClick={handleDeregister}>Deregister your account</Button>         
-      </div>
+      <Container>
+        <Row>
+          <Col xs={12} sm={4} >
+            <Card>
+              <Card.Body>
+                <UserInfo 
+                name={user.Username} 
+                email={user.Email} 
+                />
+              </Card.Body>
+            </Card>            
+          </Col>
+          <Col xs={12} sm={8}>
+            <Card>
+              <Card.Body>
+                <UpdateUser 
+                setUsername={setUsername}
+                setPassword={setPassword} 
+                setEmail={setEmail}
+                show={show}
+                user={user} 
+                />
+              </Card.Body>
+            </Card>            
+          </Col>
+        </Row>
+        <Row>        
+          <FavoriteMovies
+            favoriteMovieList={favoriteMovieList}
+            movies={movies}
+            user={user}
+            // setUser={setUser}
+            token={token}
+          />
+        </Row> 
+        <Row>    
+          <DeleteUser 
+          handleCloseDeregister={handleCloseDeregister}
+          deregister={deregister}        
+          /> 
+        </Row>
+        <Row>
+        <Button variant="primary" data-inline="true" className="m-4 float-end" onClick={handleDeregister}>Deregister your account</Button>
+        </Row>         
+      </Container>
     );
   };
 };
