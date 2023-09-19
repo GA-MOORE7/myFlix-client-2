@@ -9,7 +9,7 @@ import { MovieCard } from "../movie-card/movie-card.jsx";
 import { Card, Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
 
 
-export const ProfileView = ( { user, movies, token, updateUsername } ) => {
+export const ProfileView = ( { user, movies, token, setUser, updateUsername } ) => {
   
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
@@ -107,7 +107,7 @@ if (username !==null) {
             favoriteMovieList={favoriteMovieList}
             movies={movies}
             user={user}
-            // setUser={setUser}
+            setUser={setUser}
             token={token}
           />
         </Row> 
