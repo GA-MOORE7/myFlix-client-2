@@ -54,7 +54,7 @@ export const MainView = () => {
           onLoggedOut={() => {
             setUser(null);
             setToken(null);
-            localStorage.clear;
+            localStorage.clear();
           }}
         />
         <Row className="justify-content-md-center">
@@ -140,9 +140,6 @@ export const MainView = () => {
             }
           />
 
-
-{/* Task 7 ==> */}
-
             <Route 
                 path="/profile-view"
                 element={
@@ -161,31 +158,8 @@ export const MainView = () => {
                   )}                  
                   </>
                 }                     
-            />        
-            
-{/* <== Task 7 */}        
-          
-            
-          </Routes>
-          
-            {/* <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <LoginView onLoggedIn={(user) => setUser(user)} />
-                  </Col>
-                )}
-              </>
-
-            }
-          /> */}
-
-
-
+            />       
+            </Routes>
         </Row>
       </BrowserRouter>
   );
