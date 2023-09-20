@@ -9,7 +9,7 @@ import { MovieCard } from "../movie-card/movie-card.jsx";
 import { Card, Button, Container, Row, Col, Modal, Form } from "react-bootstrap";
 
 
-export const ProfileView = ( { user, movies, token, setUser, updateUsername } ) => {
+export const ProfileView = ( { user, movies, token, setUser } ) => {
   
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
@@ -95,7 +95,7 @@ if (username !==null) {
                 setUsername={setUsername}
                 setPassword={setPassword} 
                 setEmail={setEmail}
-                show={show}
+                // show={show}
                 setBirth={setBirth}
                 user={user} 
                 />

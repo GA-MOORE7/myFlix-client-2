@@ -112,5 +112,5 @@ MovieCard.propTypes = {
     description: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
+  // onMovieClick: PropTypes.func.isRequired
 };
