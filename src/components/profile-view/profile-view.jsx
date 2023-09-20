@@ -15,7 +15,7 @@ export const ProfileView = ( { user, movies, token, setUser, updateUsername } ) 
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const favoriteMovieList = movies.filter(movie => user.FavoriteMovies.includes(movie.id));
-  const [birth, setBirth] = useState("");
+  const [birth, setBirth] = useState(user.Birth);
 
   // const [user, setUser] = useState("");
   // const [user, setUser] = useState(storedUser? storedUser : null);
@@ -96,6 +96,7 @@ if (username !==null) {
                 setPassword={setPassword} 
                 setEmail={setEmail}
                 show={show}
+                setBirth={setBirth}
                 user={user} 
                 />
               </Card.Body>
