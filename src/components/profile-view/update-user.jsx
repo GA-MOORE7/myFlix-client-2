@@ -6,7 +6,7 @@ function UpdateUser ({ show, user, username, password, email, birth, setUsername
     return (
         <>
         <h4>Update</h4>
-        <Form classname='profile-form' user={user} show={show} >            
+        <Form className='profile-form' user={user} show={show} >            
             <Form.Label>Username</Form.Label>
             <Form.Control 
                 type= 'text'
