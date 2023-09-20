@@ -35,7 +35,7 @@ function UpdateUser ({ show, user, username, password, email, birth, setUsername
             <Form.Control 
                 type= 'date'
                 value={birth}
-                defaultValue={user.Birth}
+                // defaultValue={user.Birth}
                 placeholder="Enter your new birthday"
                 onChange={e => setBirth(e.target.value)}
             />
