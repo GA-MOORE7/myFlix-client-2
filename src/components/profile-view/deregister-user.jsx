@@ -9,10 +9,6 @@ function DeleteUser ({ handleDeleteUser, showModal, handleCloseModal }) {
 					<Modal.Title>Delete account</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>Are you sure you want to delete your account permanantly?</Modal.Body>
-				{/* <Modal.Footer>
-					<Button variant="primary" onClick={handleDeleteUser}>Yes</Button>
-					<Button variant="secondary" onClick={handleCloseModal}>No</Button>
-				</Modal.Footer> */}
 			</Modal>
     )
 }

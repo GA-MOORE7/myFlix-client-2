@@ -2,11 +2,11 @@ import React from "react";
 import Form from "react-bootstrap/Form"; 
 import Button from "react-bootstrap/Button";
 
-function UpdateUser ({ show, user, username, password, email, birth, setUsername, setPassword, setEmail, setBirth }) {
+function UpdateUser ({ show, user, username, password, email, handleSubmit, birth, setUsername, setPassword, setEmail, setBirth }) {
     return (
         <>
         <h4>Update</h4>
-        <Form className='profile-form' user={user} show={show} >            
+        <Form className='profile-form' user={user} show={show} onSubmit={handleSubmit} >            
             <Form.Label>Username</Form.Label>
             <Form.Control 
                 type= 'text'
@@ -39,7 +39,7 @@ function UpdateUser ({ show, user, username, password, email, birth, setUsername
                 placeholder="Enter your new birthday"
                 onChange={e => setBirth(e.target.value)}
             />
-            <Button variant='primary' type='submit' >
+            <Button variant='primary' type='submit' onSubmit={handleSubmit}>
                 Update
             </Button>
         </Form>

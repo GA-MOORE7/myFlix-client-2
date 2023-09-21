@@ -26,33 +26,40 @@ export const ProfileView = ( { user, movies, token, setUser } ) => {
   const handleShowModal = () => setShowModal(true);
 	const handleCloseModal = () => setShowModal(false);
 
-  UpdateUser = () => {
+  const handleSubmit = (event) => {
+		event.preventDefault();
 
-    const data = {
-      Username: username,
+		let data = {
+			Username: username,
       Password: password,
-      Email: email,
-      Birth: birth
-    };
+			Email: email,
+			Birth: birth
+		};
+		if(password) {
+			data['Password'] = password
+		}
 
-    fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/users" + user.Username, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      body: JSON.stringify(data)
-    }).then((response) => response.json())
-        .then((res) => {
-          if (res.Username) {
-            localStorage.setItem("user", JSON.stringify(res.Username));
-            localStorage.setItem("userObject", JSON.stringify(res));
-            updateUsername(res);
-            alert("Your account is updated");            
-          }
-          else {
-            alert("Update failed");
-          }
-        });
-      setShow(false);
-  };
+		fetch(`https://movies-flix-2-2c5b748a56db.herokuapp.com/users/${user.Username}`, {
+			method: "PUT",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`
+			}
+		}).then((response) => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				alert("Update failed.")
+			}
+		}).then((data) => {
+			if (data) {
+				localStorage.setItem("user", JSON.stringify(data));
+				setUser(data);
+			}
+		})
+	};
+
 
   const handleDeleteUser = () => {
 		fetch(`https://movies-flix-2-2c5b748a56db.herokuapp.com/users/${user.Username}`, {
@@ -65,7 +72,7 @@ export const ProfileView = ( { user, movies, token, setUser } ) => {
 				setUser(null);
 				alert("Your account has been deleted");
 			} else {
-				alert("something went wrong.")
+				alert("something went hndlewrong.")
 			}
 		})
 	}
@@ -95,6 +102,7 @@ if (username !==null) {
                 setUsername={setUsername}
                 setPassword={setPassword} 
                 setEmail={setEmail}
+                handleSubmit={handleSubmit}
                 // show={show}
                 setBirth={setBirth}
                 user={user} 
