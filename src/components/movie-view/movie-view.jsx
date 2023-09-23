@@ -1,8 +1,19 @@
-export const MovieView = ({ movie, onBackClick }) => {
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import "./movie-view.scss";
+import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
+
+export const MovieView = ({ movies }) => {
+  const { MovieID } = useParams();
+
+  const movie = movies.find((b) => b.id === MovieID)
+
+  console.log(movie)
+
     return (
       <div>
         <div>
-        <img src={movie.image} />
+        <img className="w-100" src={movie.image} />
         </div>
         <div>
           <span>Title: </span>
@@ -20,7 +31,16 @@ export const MovieView = ({ movie, onBackClick }) => {
           <span>Director: </span>
           <span>{movie.director}</span>
         </div>
-        <button onClick={onBackClick} className="back-button">Back</button>
+        {/* <Card.Footer className="text-center mb-3">
+                { !isFavourite ? (
+                  <Button variant="primary" onClick={addToFavourite}>Add to FavouriteList</Button>
+                ) : (
+                  <Button variant="primary" onClick={removeFromFavourite}>Remove from FavouriteList</Button>
+                )}
+            </Card.Footer> */}
+        <Link to={`/`}>
+        <button className="back-button">Back</button>
+        </Link>
       </div>
     );
   };
