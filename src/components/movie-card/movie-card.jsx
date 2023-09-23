@@ -80,11 +80,11 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
         <Card.Body>
             {isFavorite ? (
               <Button variant='danger' onClick={removeFavoriteMovie}>
-                Remove from favorite
+                Remove From Fav
               </Button>
             ) : (
               <Button variant='primary' onClick={addFavoriteMovie}>
-                Add to favorite
+                Add To Fav
               </Button>
             )}
         </Card.Body>

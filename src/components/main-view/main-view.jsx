@@ -18,7 +18,7 @@ export const MainView = () => {
   const [user, setUser] = useState(storedUser? storedUser : null);
   const [token, setToken] = useState(storedToken? storedToken : null);
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedDirector, setSelectedDirector] = useState("");
   const [searchTerm, setSearchTerm] = useState("");  
@@ -48,34 +48,6 @@ export const MainView = () => {
 
         });
     }, [token]);
-
-    // useEffect(() => {
-    //   if (!token) {
-    //     return;
-    //   }
-  
-    //   setLoading(true);
-    //   fetch("https://movies-flix-2-2c5b748a56db.herokuapp.com/movies", {
-    //     headers: { Authorization: `Bearer ${token}` },
-    //   })
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       setLoading(false);
-    //       console.log("data", data);
-    //       const moviesFromApi = data.map((movie) => {
-    //         return {
-    //           id: movie._id,
-    //           title: movie.Title,
-    //           image: movie.ImagePath,
-    //           description: movie.Description,
-    //           genre: movie.Genre.Name,
-    //           director: movie.Director.Name,
-    //         };
-    //       });
-    //       setMovies(moviesFromApi);
-    //     });
-    // }, [token]);
-
     
     const filterMovies = () => {
             let filteredMovies = movies;
@@ -104,8 +76,7 @@ export const MainView = () => {
     
     return (
       <BrowserRouter>
-        <Container>
-          <NavigationBar
+      <NavigationBar
             user={user}
             onLoggedOut={() => {
               setUser(null);
@@ -113,14 +84,15 @@ export const MainView = () => {
               localStorage.clear();
             }}
           />
-          <MovieFilter 
+        <Container>          
+          {/* <MovieFilter 
             selectedGenre={selectedGenre}
             selectedDirector={selectedDirector}
             setSelectedGenre={setSelectedGenre}
             setSelectedDirector={setSelectedDirector}
             searchTerm={searchTerm} 
             setSearchTerm={setSearchTerm} 
-          />
+          /> */}
           <Row className="justify-content-md-center">
             <Routes>
 
@@ -147,7 +119,7 @@ export const MainView = () => {
                   {user ? (
                     <Navigate to="/" />
                   ) : (
-                    <Col md={5}>
+                    <Col md={5}> 
                       <LoginView 
                       onLoggedIn={(user, token) => {
                           setUser(user);
@@ -178,32 +150,6 @@ export const MainView = () => {
               }
             />
 
-            {/* <Route
-              path="/"
-              element={
-                <>
-                  {!user ? (
-                    <Navigate to="/login" replace />
-                  ) : movies.length === 0 ? (
-                    <Col>The list is empty!</Col>
-                  ) : (
-                    <>
-                      {movies.map((movie) => (
-                        <Col className="mb-4" key={movie.id} md={3}>
-                          <MovieCard 
-                            movie={movie}
-                            user={user} 
-                            token={token}
-                            setUser={setUser} 
-                        />
-                        </Col>
-                      ))}
-                    </>
-                  )}
-                </>
-              }
-            /> */}
-
               <Route
                   path="/"
                   element={
@@ -214,17 +160,26 @@ export const MainView = () => {
                             <Col>The list is empty!</Col>
                       ) : (
                         <>
-                              {filteredMovies.map((movie) => (
-                                <Col className="mb-4" key={movie.id} md={3}>
-                                  <MovieCard 
-                                    movie={movie}
-                                    user={user} 
-                                    token={token}
-                                    setUser={setUser}
-                                    // props={props}
-                                  />
-                                </Col>
-                              ))}
+                          <Col xs={12} sm={12}>
+                            <MovieFilter 
+                              selectedGenre={selectedGenre}
+                              selectedDirector={selectedDirector}
+                              setSelectedGenre={setSelectedGenre}
+                              setSelectedDirector={setSelectedDirector}
+                              searchTerm={searchTerm} 
+                              setSearchTerm={setSearchTerm} 
+                            />
+                          </Col>
+                            {filteredMovies.map((movie) => (
+                              <Col className="mb-4" key={movie.id} md={3}>
+                                <MovieCard 
+                                  movie={movie}
+                                  user={user} 
+                                  token={token}
+                                  setUser={setUser}                            
+                                />
+                            </Col>
+                            ))}
                         </>
                       )}
                     </>

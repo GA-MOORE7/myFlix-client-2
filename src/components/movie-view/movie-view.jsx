@@ -31,13 +31,6 @@ export const MovieView = ({ movies }) => {
           <span>Director: </span>
           <span>{movie.director}</span>
         </div>
-        {/* <Card.Footer className="text-center mb-3">
-                { !isFavourite ? (
-                  <Button variant="primary" onClick={addToFavourite}>Add to FavouriteList</Button>
-                ) : (
-                  <Button variant="primary" onClick={removeFromFavourite}>Remove from FavouriteList</Button>
-                )}
-            </Card.Footer> */}
         <Link to={`/`}>
         <button className="back-button">Back</button>
         </Link>
