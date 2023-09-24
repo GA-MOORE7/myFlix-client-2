@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import "./movie-view.scss";
 import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
 
 export const MovieView = ({ movies }) => {
@@ -11,36 +10,29 @@ export const MovieView = ({ movies }) => {
   console.log(movie)
 
     return (
-      <div>
-        <div>
-        <img className="w-100" src={movie.image} />
-        </div>
-        <div>
-          <span>Title: </span>
-          <span>{movie.title}</span>
-        </div>
-        <div>
-          <span>Description: </span>
-          <span>{movie.description}</span>
-        </div>
-        <div>
-          <span>Genre: </span>
-          <span>{movie.genre}</span>
-        </div>
-        <div>
-          <span>Director: </span>
-          <span>{movie.director}</span>
-        </div>
-        {/* <Card.Footer className="text-center mb-3">
-                { !isFavourite ? (
-                  <Button variant="primary" onClick={addToFavourite}>Add to FavouriteList</Button>
-                ) : (
-                  <Button variant="primary" onClick={removeFromFavourite}>Remove from FavouriteList</Button>
-                )}
-            </Card.Footer> */}
+      <Card>
+        <Card.Body>
+        <Card.Img className="w-100" src={movie.image} />
+        </Card.Body>
+        <Card.Body>
+          <Card.Title>Title: </Card.Title>
+          <Row>{movie.title}</Row>
+        </Card.Body>
+        <Card.Body>
+          <Card.Title>Description: </Card.Title>
+          <Row>{movie.description}</Row>
+        </Card.Body>
+        <Card.Body>
+          <Card.Title>Genre: </Card.Title>
+          <Row>{movie.genre}</Row>
+        </Card.Body>
+        <Card.Body>
+          <Card.Title>Director: </Card.Title>
+          <Row>{movie.director}</Row>
+        </Card.Body>
         <Link to={`/`}>
-        <button className="back-button">Back</button>
+        <Button className="back-button">Back</Button>
         </Link>
-      </div>
+      </Card>
     );
   };

@@ -1,10 +1,10 @@
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ProfileView } from "../profile-view/profile-view";
+import "./navigation-bar.scss";
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar expand="lg" class="navbar">
       <Container>
         <Navbar.Brand as={Link} to="/">
           MyFlix App

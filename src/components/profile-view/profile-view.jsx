@@ -16,9 +16,6 @@ export const ProfileView = ( { user, movies, token, setUser } ) => {
   const [email, setEmail] = useState(user.Email);
   const favoriteMovieList = movies.filter(movie => user.FavoriteMovies.includes(movie.id));
   const [birth, setBirth] = useState(user.Birth);
-
-  // const [user, setUser] = useState("");
-  // const [user, setUser] = useState(storedUser? storedUser : null);
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [deregister, setDeregister] = useState(false);
@@ -72,14 +69,10 @@ export const ProfileView = ( { user, movies, token, setUser } ) => {
 				setUser(null);
 				alert("Your account has been deleted");
 			} else {
-				alert("something went hndlewrong.")
+				alert("something went wrong.")
 			}
 		})
 	}
-
-  
-  // const handleShowModal = () => setShowModal(true);
-	// const handleCloseModal = () => setShowModal(false);
     
 if (username !==null) {
     return (
@@ -103,7 +96,6 @@ if (username !==null) {
                 setPassword={setPassword} 
                 setEmail={setEmail}
                 handleSubmit={handleSubmit}
-                // show={show}
                 setBirth={setBirth}
                 user={user} 
                 />

@@ -4,7 +4,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../movie-view/movie-view.scss";
+
 
 
 // The MovieCard function component 
@@ -80,11 +80,11 @@ export const MovieCard = ({ movie, user, token, setUser }) => {
         <Card.Body>
             {isFavorite ? (
               <Button variant='danger' onClick={removeFavoriteMovie}>
-                Remove from favorite
+                Remove From Fav
               </Button>
             ) : (
-              <Button variant='primary' onClick={addFavoriteMovie}>
-                Add to favorite
+              <Button variant='success' onClick={addFavoriteMovie}>
+                Add To Fav
               </Button>
             )}
         </Card.Body>
