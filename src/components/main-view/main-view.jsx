@@ -7,10 +7,10 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import { MovieFilter } from "../movie-filter/movie-filter";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Container from 'react-bootstrap/Container';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Card, Button, Row, Col, Modal, Form } from "react-bootstrap";
+import "./main-view.scss";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -85,14 +85,6 @@ export const MainView = () => {
             }}
           />
         <Container>          
-          {/* <MovieFilter 
-            selectedGenre={selectedGenre}
-            selectedDirector={selectedDirector}
-            setSelectedGenre={setSelectedGenre}
-            setSelectedDirector={setSelectedDirector}
-            searchTerm={searchTerm} 
-            setSearchTerm={setSearchTerm} 
-          /> */}
           <Row className="justify-content-md-center">
             <Routes>
 
@@ -160,7 +152,7 @@ export const MainView = () => {
                             <Col>The list is empty!</Col>
                       ) : (
                         <>
-                          <Col xs={12} sm={12}>
+                          <Card xs={12} sm={12} className="movie-filter">
                             <MovieFilter 
                               selectedGenre={selectedGenre}
                               selectedDirector={selectedDirector}
@@ -169,7 +161,7 @@ export const MainView = () => {
                               searchTerm={searchTerm} 
                               setSearchTerm={setSearchTerm} 
                             />
-                          </Col>
+                          </Card>
                             {filteredMovies.map((movie) => (
                               <Col className="mb-4" key={movie.id} md={3}>
                                 <MovieCard 
