@@ -13,6 +13,10 @@
 - #### React-Bootstrap Components: Enhances UI components with React-Bootstrap integration.
 - #### React Router: Implements React Router for efficient navigation and URL management.
 
+## Link to Live Site:
+
+#### https://myflix-app-gamoore7.netlify.app/
+
 ## Getting Started
 
 - #### Clone the repository: git clone https://github.com/GA-MOORE7/myFlix-client-2.git
